@@ -73,7 +73,7 @@ AsteroidGame/
 
 ```bash
 clone the repo to IDE of choice
-after cloning enter step code below
+after cloning repo enter two steps below
 
 javac -d bin src/*.java                  # Program will complile
 java -cp bin src.WordAsteroid            # Program will run
