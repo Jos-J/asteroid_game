@@ -40,19 +40,28 @@ Built using **Java** and **Swing**, this game helps improve your typing speed an
 ## 📁 Project Structure
 ```
 AsteroidGame/
-├── src/
-│ ├── GameFrame.java # Game window setup
-│ ├── GamePanel.java # Game loop and rendering
-│ ├── WordAsteroid.java # Represents falling word
-│ ├── WordManager.java # Controls word spawning and matching
-│ ├── InputHandler.java # Typing input logic
-│ └── Utils.java # Helper functions
 ├── assets/
-│ ├── words.txt # Word list for gameplay
-│ ├── background.png # (Optional) Background image
-│ ├── hit.wav # Sound effect for correct word
-│ └── miss.wav # Sound for missed asteroid
-├── LICENSE
+│   ├── words.txt                         # Word list for gameplay
+│   ├── background.png                    # Background image
+│   ├── hit.wav                           # Sound effect for correct word
+│   └── miss.wav                          # Sound for missed asteroid
+│
+├── bin/                                  # ← Compiled .class files will go here
+│   └── src/
+│       ├── GameFrame.class
+│       ├── GamePanel.class
+│       ├── WordAsteroid.class
+│       ├── WordManager.class
+│       ├── InputHandler.class
+│       └── Utils.class
+│
+├── src/
+│   ├── GameFrame.java                    # Game window setup
+│   ├── GamePanel.java                    # Game loop and rendering
+│   ├── WordAsteroid.java                 # Represents falling word
+│   ├── WordManager.java                  # Controls word spawning and matching
+│   ├── InputHandler.java                 # Typing input logic
+│   └── Utils.java                        # Helper functions
 └── README.md
 ```
 
@@ -63,9 +72,9 @@ AsteroidGame/
 ### 🔧 Compile and Run (Command Line)
 
 ```bash
-cd AsteroidGame/src
-javac *.java
-java GameFrame
+javac -d bin src/*.java                  # Program will complile
+java -cp bin src.WordAsteroid            # Program will run
+
 ```
 
 ### License 
