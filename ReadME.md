@@ -72,9 +72,11 @@ AsteroidGame/
 ### 🔧 Compile and Run (Command Line)
 
 ```bash
+clone the repo to IDE of choice
+after cloning enter step code below
+
 javac -d bin src/*.java                  # Program will complile
 java -cp bin src.WordAsteroid            # Program will run
-
 ```
 
 ### License 
