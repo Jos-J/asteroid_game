@@ -48,10 +48,10 @@ public class GamePanel extends JPanel implements Runnable {
 
     // start of game loop
     public void startGame() {
-        if(gameThread == nul || !running) {
+        if(gameThread == null || !running) {
+            running = true;
             gameThread = new Thread(this);
             gameThread.start();
-            running = true;
         }
     }
 
@@ -69,7 +69,7 @@ public class GamePanel extends JPanel implements Runnable {
             if (sleepTime > 0) {
                 try {
                     Thread.sleep(sleepTime);
-                } catch (InterruptedExecption e) {
+                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
@@ -96,7 +96,7 @@ public class GamePanel extends JPanel implements Runnable {
         if (background != null) {
             g.drawImage(background, 0, 0, getWidth(), getHeight(), null);
         } else {
-            g.setColor(color.BLACK);
+            g.setColor(Color.BLACK);
             g.fillRect(0, 0, getWidth(), getHeight());
         }
 
@@ -105,7 +105,7 @@ public class GamePanel extends JPanel implements Runnable {
         g.fillRect(100, testY, 50, 50);
 
         // debug text
-        g.setColor(Color.White);
+        g.setColor(Color.WHITE);
         g.drawString("GamePanel running...", 10, 20);
         
 /*
