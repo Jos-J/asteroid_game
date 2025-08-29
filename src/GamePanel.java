@@ -36,8 +36,8 @@ public class GamePanel extends JPanel implements Runnable {
 
 
         // Init managers
-        InputHandler = new InputHandler();
-        addKeyListener(InputHandler);
+        inputHandler = new InputHandler();
+        addKeyListener(inputHandler);
 
         wordManager = new WordManager();
 
