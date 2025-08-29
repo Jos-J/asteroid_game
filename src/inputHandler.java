@@ -23,7 +23,7 @@ public class InputHandler  implements KeyListener {
     }
 
     @Override
-    public void keyPressed(KeyEvent e)  {
+    public void keyReleased(KeyEvent e)  {
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) leftPressed = false;
