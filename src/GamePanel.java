@@ -21,6 +21,8 @@ public class GamePanel extends JPanel implements Runnable {
     //
     private Image background;
 
+    private WordAsteroid asteroid;
+
 /*
     // Manager & Game objects
     private  WordManager wordManager;
@@ -41,6 +43,9 @@ public class GamePanel extends JPanel implements Runnable {
 */
         // Load background image
         background = new ImageIcon("./assets/background_stars.jpg").getImage();
+
+        // test for faling word
+        asteroid = new WordAsteroid("java", 200, 0, 2); // word, x, y, speed
     }
 
     // start of game loop
@@ -72,7 +77,17 @@ public class GamePanel extends JPanel implements Runnable {
             }
         }
     }
+    
+    private void update() {
+        if (asteroid != null) {
+            asteroid.update();
 
+            // reset position if it goes of screen
+            if (asteroid.isOffScreen(getHeight())) {
+                asteroid = new WordAsteroid("java", 200, 0, 2);
+            }
+        }
+    }
 
 /*      //update game state
 
@@ -93,8 +108,13 @@ public class GamePanel extends JPanel implements Runnable {
             g.fillRect(0, 0, getWidth(), getHeight());
         }
 
+        // draw single asteroid
+        if (asteroid != null) {
+            asteroid.draw(g);
+        }
+
         // debug text
-        g.setColor(Color.BLACK);
+        g.setColor(Color.WHITE);
         g.drawString("GamePanel running...", 10, 20);
         
 /*
