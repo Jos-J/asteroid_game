@@ -23,10 +23,10 @@ public class GamePanel extends JPanel implements Runnable {
 
     // word manaager
     private  WordManager wordManager;
-/*
-    // Manager & Game objects
-    private InputHander inputHander;
-*/
+
+    // input hanhandler
+    private InputHandler inputHandler;
+
     
 
     public GamePanel() {
@@ -34,14 +34,11 @@ public class GamePanel extends JPanel implements Runnable {
         setFocusable(true);
         requestFocus();
 
-/*
-        // Init managers
-        
-        inputHander = new InputHander();
 
-        addKeyListener(inputHander);
-*/
         // Init managers
+        InputHandler = new InputHandler();
+        addKeyListener(InputHandler);
+
         wordManager = new WordManager();
 
         // Load background image
@@ -82,6 +79,13 @@ public class GamePanel extends JPanel implements Runnable {
 
     private void update() {
         wordManager.update(getWidth(), getHeight()); 
+
+        if (inputHandler.isLeftPressed()) {
+            System.out.println("Left arrow held down");
+        }
+        if (inputHandler.isSpacePressed()) {
+            System.out.println("space arrow held down");
+        }
     }
 
     @Override
