@@ -4,40 +4,42 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class InputHandler  implements KeyListener {
-    private boolean leftPressed, rightPressed, upPressed, downPressed, spacePressed;
+    private StingBuilder currentInput = new StingBuilder();
+    private boolean enterPressed = false;
 
     @Override
     public void keyTyped(KeyEvent e) {
-
+        char c = e.getKeyChar();
+        if  (Character.isLetter(c)) {
+            currentInput.append(c);
+        }
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
 
-        if (key == KeyEvent.VK_LEFT) leftPressed = true;
-        if (key == KeyEvent.VK_RIGHT) rightPressed = true;
-        if (key == KeyEvent.VK_UP)      upPressed = true;
-        if (key == KeyEvent.VK_DOWN)  downPressed = true;
-        if (key == KeyEvent.VK_SPACE) spacePressed = true;
+        if (key ==KeyEvent.VK_BACK_SPACE && currentInput.length() > 0) {
+            currentInput.deleteCharAt(currentInput.length() - 1);
+        } else if (key == KeyEvent.VK_ENTER) {
+            enterPressed = true;
+        }
+       
     }
 
-    @Override
-    public void keyReleased(KeyEvent e)  {
-        int key = e.getKeyCode();
-
-        if (key == KeyEvent.VK_LEFT) leftPressed = false;
-        if (key == KeyEvent.VK_RIGHT) rightPressed = false;
-        if (key == KeyEvent.VK_UP)     upPressed = false;
-        if (key == KeyEvent.VK_DOWN)   downPressed = false;
-        if (key == KeyEvent.VK_SPACE)  spacePressed = false;
+    public string getCurrentInput() {
+        return currentInput.toString();
     }
 
-    // checking state in GamePanel
-    public boolean isLeftPressed() { return leftPressed; }
-    public boolean isRightPressed() { return rightPressed; }
-    public boolean isUpPressed() { return upPressed; }
-    public boolean isDownPressed() { return downPressed; }
-    public boolean isSpacePressed() { return spacePressed; }
+    public boolean isEnterPressed() {
+        return enterPressed;
+    }
+        // clear input after submission 
+    public void resetEnter() {
+        enterPressed = false;
+        currentInput.setLength(0); 
+    }
 
+
+    
 }
