@@ -17,19 +17,16 @@ public class GamePanel extends JPanel implements Runnable {
     // Frame rate
     private final int FPS = 60;
     private int FRAME_TIME = 1000 / FPS;
+
+    //
+    private Image background;
+
 /*
     // Manager & Game objects
     private  WordManager wordManager;
     private InputHander inputHander;
 */
 
-    //
-    private Image background;
-
-    // test object
-    private int testY = 0;
-
-    
     public GamePanel() {
         setPreferredSize(new Dimension(800, 600)); // window size
         setFocusable(true);
@@ -75,19 +72,15 @@ public class GamePanel extends JPanel implements Runnable {
             }
         }
     }
-/*
+
+
+/*      //update game state
+
     private void update() {
-        wordManager.update(); // move asteriods, check collision, etc.
+        wordManager.update(getWidth(), getHeight());   // move asteriods, check collision, etc.
     }
 */
-    //update game state
-
-    private void update() {
-        // move test object down
-        testY += 2;
-        if (testY > getHeight()) testY = 0;
-    }
-
+    
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -99,10 +92,6 @@ public class GamePanel extends JPanel implements Runnable {
             g.setColor(Color.ORANGE);
             g.fillRect(0, 0, getWidth(), getHeight());
         }
-
-        // draw test object
-        g.setColor(Color.RED);
-        g.fillRect(100, testY, 50, 50);
 
         // debug text
         g.setColor(Color.BLACK);
