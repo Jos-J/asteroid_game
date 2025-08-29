@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class InputHandler  implements KeyListener {
-    private StingBuilder currentInput = new StingBuilder();
+    private StringBuilder currentInput = new StringBuilder();
     private boolean enterPressed = false;
 
     @Override
@@ -26,8 +26,11 @@ public class InputHandler  implements KeyListener {
         }
        
     }
+    @Override
+    public void keyReleased(KeyEvent e) {
 
-    public string getCurrentInput() {
+    }
+    public String getCurrentInput() {
         return currentInput.toString();
     }
 

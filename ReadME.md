@@ -76,7 +76,7 @@ clone the repo to IDE of choice
 after cloning repo enter two steps below
 
 javac -d bin src/*.java                  # Program will complile
-java -cp bin src.GrameFrame              # Program will run
+java -cp bin src.GameFrame              # Program will run
 ```
 
 ### License 

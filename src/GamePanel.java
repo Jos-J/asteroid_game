@@ -83,7 +83,7 @@ public class GamePanel extends JPanel implements Runnable {
         if (inputHandler.isEnterPressed()) {
             String typedWord = inputHandler.getCurrentInput();
             if (wordManager.checkAndDestroy(typedWord)) {
-                 System.out.println("word destroyed: " + typedWord)
+                 System.out.println("word destroyed: " + typedWord);
             } else {
                 System.out.println("No Match: " + typedWord);
             }

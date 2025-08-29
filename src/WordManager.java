@@ -36,8 +36,8 @@ public class WordManager {
 
     public boolean checkAndDestroy(String typedWord) {
         for (int i = 0; i < asteroids.size(); i++) {
-            Word w = asteroids.get(i);
-            if (w.getText().equalIgnoreCase(typedWord)) {
+            WordAsteroid w = asteroids.get(i);
+            if (w.getText().equalsIgnoreCase(typedWord)) {
                 asteroids.remove(i);
                 return true;
             }
@@ -53,7 +53,7 @@ public class WordManager {
         if (spawnTimer >= spawnDelay) {
             spawnTimer = 0;
             String word = wordList.get(random.nextInt(wordList.size()));
-            int x = random.nextInt(panelWidth - 100);
+            int x = random.nextInt(Math.max(1, panelWidth - 100));
             asteroids.add(new WordAsteroid(word, x, 0, 2));
         }
 
