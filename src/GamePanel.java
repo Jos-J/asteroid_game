@@ -81,11 +81,19 @@ public class GamePanel extends JPanel implements Runnable {
         wordManager.update(getWidth(), getHeight()); 
 
         if (inputHandler.isLeftPressed()) {
-            System.out.println("Left arrow held down");
+            String typedWord = inputHandler.getCurrentInput();
+            System.out.println("Typed: " + typedWord);
+
+            boolean destroyed = wordManager.checkAndDestroy(typedWord);
         }
-        if (inputHandler.isSpacePressed()) {
-            System.out.println("space arrow held down");
+        if (destroyed) {
+            System.out.println("word destroyed")
+            // potientally add points
+        } else {
+            System.out.println(" no match scrub ")
         }
+
+        inputHandler.resetEnter();
     }
 
     @Override
@@ -101,7 +109,7 @@ public class GamePanel extends JPanel implements Runnable {
         }
 
 
-        // draw words/asteroids
+        // draw words(asteroids)
         wordManager.draw(g);
 
 

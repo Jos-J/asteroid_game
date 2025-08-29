@@ -40,6 +40,4 @@ public class InputHandler  implements KeyListener {
         currentInput.setLength(0); 
     }
 
-
-    
 }
