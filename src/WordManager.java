@@ -34,6 +34,17 @@ public class WordManager {
         }
     }
 
+    public boolean checkAndDestroy(String typedWord) {
+        for (int i = 0; i < asteroids.size(); i++) {
+            Word w = asteroids.get(i);
+            if (w.getText().equalIgnoreCase(typedWord)) {
+                asteroids.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+
     // Update all asteroids and spawn new ones
     public void update(int panelWidth, int panelHeight) {
         spawnTimer++;

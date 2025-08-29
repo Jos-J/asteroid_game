@@ -116,5 +116,8 @@ public class GamePanel extends JPanel implements Runnable {
         g.setColor(Color.WHITE);
         g.drawString("GamePanel running...", 10, 20);
 
+        g.setColor(Color.ORANGE);
+        g.drawString("Input: " + inputHandler.getCurrentInput(), 10, 50);
+
     }
 }
