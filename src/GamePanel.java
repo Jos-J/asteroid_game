@@ -25,9 +25,9 @@ public class GamePanel extends JPanel implements Runnable {
 
 /*
     // Manager & Game objects
-    private  WordManager wordManager;
     private InputHander inputHander;
 */
+    private  WordManager wordManager;
 
     public GamePanel() {
         setPreferredSize(new Dimension(800, 600)); // window size
@@ -36,16 +36,17 @@ public class GamePanel extends JPanel implements Runnable {
 
 /*
         // Init managers
-        wordManager = new WordManager();
+        
         inputHander = new InputHander();
 
         addKeyListener(inputHander);
 */
+        wordManager = new WordManager();
+
         // Load background image
         background = new ImageIcon("./assets/background_stars.jpg").getImage();
 
-        // test for faling word
-        asteroid = new WordAsteroid("java", 200, 0, 2); // word, x, y, speed
+        
     }
 
     // start of game loop
@@ -89,12 +90,11 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
 
-/*      //update game state
 
     private void update() {
-        wordManager.update(getWidth(), getHeight());   // move asteriods, check collision, etc.
+        wordManager.update(getWidth(), getHeight()); 
     }
-*/
+
     
     @Override
     protected void paintComponent(Graphics g) {
@@ -108,19 +108,14 @@ public class GamePanel extends JPanel implements Runnable {
             g.fillRect(0, 0, getWidth(), getHeight());
         }
 
-        // draw single asteroid
-        if (asteroid != null) {
-            asteroid.draw(g);
-        }
 
-        // debug text
-        g.setColor(Color.WHITE);
-        g.drawString("GamePanel running...", 10, 20);
-        
-/*
         // draw words/asteroids
         wordManager.draw(g);
-*/
+
+
+        g.setColor(Color.WHITE);
+        g.drawString("GamePanel running...", 10, 20);
+
     }
 
 }

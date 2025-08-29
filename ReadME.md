@@ -41,12 +41,12 @@ Built using **Java** and **Swing**, this game helps improve your typing speed an
 ```
 AsteroidGame/
 ├── assets/
-│   ├── words.txt                         # Word list for gameplay
-│   ├── background.png                    # Background image
-│   ├── hit.wav                           # Sound effect for correct word
-│   └── miss.wav                          # Sound for missed asteroid
+│   ├── words.txt                         
+│   ├── background_stars.png               
+│   ├── hit.wav                           
+│   └── miss.wav                          
 │
-├── bin/                                  # ← Compiled .class files will go here
+├── bin/                                  
 │   └── src/
 │       ├── GameFrame.class
 │       ├── GamePanel.class
@@ -56,10 +56,10 @@ AsteroidGame/
 │       └── Utils.class
 │
 ├── src/
-│   ├── GameFrame.java                    # Game window setup
-│   ├── GamePanel.java                    # Game loop and rendering
-│   ├── WordAsteroid.java                 # Represents falling word
-│   ├── WordManager.java                  # Controls word spawning and matching
+│   ├── GameFrame.java                    
+│   ├── GamePanel.java                    
+│   ├── WordAsteroid.java                 
+│   ├── WordManager.java                  
 │   ├── InputHandler.java                 # Typing input logic
 │   └── Utils.java                        # Helper functions
 └── README.md
