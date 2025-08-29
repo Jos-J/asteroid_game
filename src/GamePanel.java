@@ -21,13 +21,13 @@ public class GamePanel extends JPanel implements Runnable {
     //
     private Image background;
 
-    private WordAsteroid asteroid;
-
+    // word manaager
+    private  WordManager wordManager;
 /*
     // Manager & Game objects
     private InputHander inputHander;
 */
-    private  WordManager wordManager;
+    
 
     public GamePanel() {
         setPreferredSize(new Dimension(800, 600)); // window size
@@ -41,6 +41,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         addKeyListener(inputHander);
 */
+        // Init managers
         wordManager = new WordManager();
 
         // Load background image
@@ -78,24 +79,13 @@ public class GamePanel extends JPanel implements Runnable {
             }
         }
     }
-    
-    private void update() {
-        if (asteroid != null) {
-            asteroid.update();
-
-            // reset position if it goes of screen
-            if (asteroid.isOffScreen(getHeight())) {
-                asteroid = new WordAsteroid("java", 200, 0, 2);
-            }
-        }
-    }
-
 
     private void update() {
         wordManager.update(getWidth(), getHeight()); 
     }
 
-    
+    }
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -117,5 +107,3 @@ public class GamePanel extends JPanel implements Runnable {
         g.drawString("GamePanel running...", 10, 20);
 
     }
-
-}

@@ -1,3 +1,6 @@
+package src;
+
+import java.awt.*;
 import java.io.*;
 import java.util.*;
 
@@ -26,6 +29,7 @@ public class WordManager {
             wordList.addAll(Arrays.asList("java", "asteroid", "game", "typing", "panel"));
         }
     }
+
     // Update all asteroids and spawn new ones
     public void update(int panelWidth, int panelHeight) {
         spawnTimer++;
@@ -54,7 +58,7 @@ public class WordManager {
         }
     }
 
-    // Optional: get the list for checking typed words
+    // Getter for the list of asteroids (useful for typed word detection)
     public List<WordAsteroid> getAsteroids() {
         return asteroids;
     }
