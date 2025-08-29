@@ -84,8 +84,6 @@ public class GamePanel extends JPanel implements Runnable {
         wordManager.update(getWidth(), getHeight()); 
     }
 
-    }
-
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -107,3 +105,4 @@ public class GamePanel extends JPanel implements Runnable {
         g.drawString("GamePanel running...", 10, 20);
 
     }
+}

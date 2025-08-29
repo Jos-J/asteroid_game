@@ -1,8 +1,12 @@
 package src;
 
-import java.awt.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Arrays;
 import java.io.*;
-import java.util.*;
+import java.awt.Graphics;
+
 
 public class WordManager {
     private List<WordAsteroid> asteroids = new ArrayList<>();
