@@ -52,7 +52,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     @Override 
-    pubic void run(){
+    public void run(){
         while (running) {
             long startTime = System.currentTimeMillis();
 

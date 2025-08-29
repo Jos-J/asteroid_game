@@ -1,11 +1,30 @@
 package src;
 
-import javax.swing.Jframe;
+import javax.swing.*;
 
-pubic class GameFrame extends JFrame {
+public class GameFrame extends JFrame {
+    public GameFrame() {
+        setTitle("Asteroid Typing Game");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
 
-    GamePanel panel;
+        GamePanel panel = new GamePanel();
+        add(panel);
+        pack();
+        setLocationRelativeTo(null);
+        setVisible(true);
+        
+        panel.startGame();
+    }
 
+    public static void main(String[] args) {
+        new GameFrame();
+    }
+}
+
+    
+/*
+GamePanel panel;
     GameFrame() {
         panel = new GamePanel();
         this.add(panel);
@@ -15,5 +34,7 @@ pubic class GameFrame extends JFrame {
         this.pack();
         this.setVisible(true);
         this.setLocationRelativeTo(null); // Center Window
+        
     }
 }
+*/
