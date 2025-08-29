@@ -43,7 +43,7 @@ public class GamePanel extends JPanel implements Runnable {
         addKeyListener(inputHander);
 */
         // Load background image
-        background = new ImageIcon("assets/backgoundImage.png").getImage();
+        background = new ImageIcon("./assets/background_stars.jpg").getImage();
     }
 
     // start of game loop
@@ -96,7 +96,7 @@ public class GamePanel extends JPanel implements Runnable {
         if (background != null) {
             g.drawImage(background, 0, 0, getWidth(), getHeight(), null);
         } else {
-            g.setColor(Color.BLACK);
+            g.setColor(Color.ORANGE);
             g.fillRect(0, 0, getWidth(), getHeight());
         }
 
@@ -105,7 +105,7 @@ public class GamePanel extends JPanel implements Runnable {
         g.fillRect(100, testY, 50, 50);
 
         // debug text
-        g.setColor(Color.WHITE);
+        g.setColor(Color.BLACK);
         g.drawString("GamePanel running...", 10, 20);
         
 /*
