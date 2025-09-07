@@ -113,7 +113,7 @@ public class GamePanel extends JPanel implements Runnable {
             projectiles.add(new Projectile(startX, startY, targetX, targetY));
 
             // play hit sound
-            Utils.playSound("./assets/laserRocket2_hit.wav");
+            Utils.playSound("./assets/zzapp.wav");
         } else {
             System.out.println("No Match: " + typedWord);
         }
