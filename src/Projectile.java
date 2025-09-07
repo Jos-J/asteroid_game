@@ -6,7 +6,7 @@ import java.awt.Rectangle;
 
 public class Projectile {
     private double x, y;
-    private double speed;
+    private double dx, dy;
     private int speed = 12;
     private boolean active;
 
