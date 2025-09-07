@@ -1,87 +1,85 @@
-# 📝 Word Asteroid Game  
+# 🚀 Asteroid Typing Game
 
-A creative twist on the classic Asteroids game — instead of shooting rocks, you type words to destroy falling asteroids!  
-Built using **Java** and **Swing**, this game helps improve your typing speed and reaction time while having fun.
-
----
-
-## 🚀 Gameplay Overview
-
-- Words fall from the top of the screen like asteroids ☄️  
-- Type the full word and press `Enter` to destroy it  
-- Earn points for each word destroyed  
-- If a word reaches the bottom, you lose a life  
-- Game gets progressively faster!
+A portfolio-ready full-stack project where a classic typing game meets modern web development.  
+This project demonstrates frontend game design, backend API development, and SQL database integration — making it an excellent showcase for employers or personal learning.  
 
 ---
 
-## 🎮 Controls
-
-| Action             | Key                        |
-|--------------------|----------------------------|
-| Type word          | Keyboard                   |
-| Submit word        | `Enter`                    |
-| Restart game       | `R` (after game over)      |
-| Exit game          | `ESC`                      |
+## 🎮 Features
+- Words fall like asteroids — type them correctly to destroy them.
+- Shooting projectile effect when a word is destroyed.
+- Score tracking with a persistent leaderboard.
+- Backend API for words and scores.
+- Database integration for storing words and high scores.
 
 ---
 
-## 🧠 Features
-
-🔹 Real-time falling word animation  
-🔹 Typing-based input system  
-🔹 Score and life tracking  
-🔹 Random word selection from list  
-🔹 Dynamic difficulty scaling  
-🔹 Simple GUI using `JFrame` and `JPanel`  
-
----
-
-## 📁 Project Structure
+## 🏗️ Project Structure
 ```
 AsteroidGame/
-├── assets/
-│   ├── background_stars.png                         
-│   ├── hit.wav               
-│   ├── miss.wav                           
-│   └── words.txt                          
+├── frontend/                     
+│   ├── index.html                
+│   ├── style.css                 
+│   └── game.js                   
 │
-├── bin/                                  
-│   └── src/
-│       ├── GameFrame.class
-│       ├── GamePanel.class
-│       ├── InputHandler.class
-│       ├── Projectile.class
-│       ├── Utils.class
-│       ├── WordAsteroid.class
-│       └── WordManager.class
+├── backend/                      # Java backend (Spring Boot or Servlets)
+│   ├── src/
+│   │   ├── main/java/com/game/
+│   │   │   ├── AsteroidGameApp.java     # Main entry point
+│   │   │   ├── controller/
+│   │   │   │   ├── WordController.java  # API for words
+│   │   │   │   └── ScoreController.java # API for scores
+│   │   │   ├── model/
+│   │   │   │   ├── Word.java
+│   │   │   │   └── Score.java
+│   │   │   ├── service/
+│   │   │   │   ├── WordService.java
+│   │   │   │   └── ScoreService.java
+│   │   │   └── repository/
+│   │   │       ├── WordRepository.java
+│   │   │       └── ScoreRepository.java
+│   │   └── resources/
+│   │       ├── application.properties   # DB config
+│   │       └── data.sql                 # Optional sample data
+│   └── pom.xml                          # Maven config
 │
-├── src/
-│   ├── GameFrame.java                    
-│   ├── GamePanel.java                    
-│   ├── InputHandler.java
-│   ├── Projectile.java 
-│   ├── Utils.java                                   
-│   ├── WordAsteroid.java                 
-│   └── WordManager.java                        
-└── README.md
+└── db/
+    └── schema.sql                # SQL schema for words and scores
 ```
 
 ---
 
-## 🛠 How to Build & Run
+## 🔌 API Endpoints
+- `GET /api/words` → Fetch random words from database  
+- `POST /api/score` → Save a player score  
+- `GET /api/leaderboard` → Fetch top scores  
 
-### 🔧 Compile and Run (Command Line)
+---
 
-```bash
-clone the repo to IDE of choice
-after cloning repo enter two steps below
+## 🛠️ Tech Stack
+Frontend: HTML5, CSS3, JavaScript  
+Backend: Java (Spring Boot)  
+Database: SQL (MySQL)  
 
-javac -d bin src/*.java                  # Program will complile
-java -cp bin src.GameFrame              # Program will run
-```
+---
 
-### License 
+## 🚀 Getting Started
+1. Import `db/schema.sql` into your SQL database.  
+2. Run the Java backend (`mvn spring-boot:run`).  
+3. Open `frontend/index.html` in your browser to start playing.  
+
+---
+
+## 📌 Roadmap
+- [ ] Add animations for projectile hits  
+- [ ] Game over + restart screen  
+- [ ] Difficulty scaling (faster asteroids over time)  
+- [ ] Deploy online  
+
+---
+
+## 📜 License
+
 ![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)
 
 Copyright (c) 2025 Jos
