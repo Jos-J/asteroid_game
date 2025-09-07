@@ -34,16 +34,16 @@ public class WordManager {
         }
     }
 
-    public boolean checkAndDestroy(String typedWord) {
-        for (int i = 0; i < asteroids.size(); i++) {
-            WordAsteroid w = asteroids.get(i);
-            if (w.getText().equalsIgnoreCase(typedWord)) {
-                asteroids.remove(i);
-                return true;
-            }
+    public WordAsteroid checkAndDestroyTypedWord(String typedWord) {
+        for (WordAsteroid asteroid : asteroids) { 
+            if (asteroid.getWord().equalsIgnoreCase(typedWord)) {
+                asteroids.remove(asteroid);       // remove from screen
+                return asteroid;                   // return the destroyed asteroid
         }
-        return false;
     }
+    return null; // no match found
+}
+
 
     // Update all asteroids and spawn new ones
     public void update(int panelWidth, int panelHeight) {
