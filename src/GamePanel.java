@@ -27,6 +27,9 @@ public class GamePanel extends JPanel implements Runnable {
     // input hanhandler
     private InputHandler inputHandler;
 
+    // list to hold projectiles
+    private java.util.List<Projectile> projectiles = new java.util.ArrayList<>();
+
     
 
     public GamePanel() {
@@ -77,19 +80,47 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
 
-    private void update() {
-        wordManager.update(getWidth(), getHeight()); 
+   private void update() {
+    // Update falling words
+    wordManager.update(getWidth(), getHeight());
 
-        if (inputHandler.isEnterPressed()) {
-            String typedWord = inputHandler.getCurrentInput();
-            if (wordManager.checkAndDestroy(typedWord)) {
-                 System.out.println("word destroyed: " + typedWord);
-            } else {
-                System.out.println("No Match: " + typedWord);
-            }
-              inputHandler.resetEnter();
+    // Update projectiles
+    for (int i = 0; i < projectiles.size(); i++) {
+        Projectile p = projectiles.get(i);
+        p.update();
+        if (!p.isActive()) {
+            projectiles.remove(i);
+            i--; // adjust index after removal
         }
     }
+
+    // Check typed word
+    if (inputHandler.isEnterPressed()) {
+        String typedWord = inputHandler.getCurrentInput();
+
+        // Return the asteroid object that matches typed word
+        WordAsteroid destroyedAsteroid = wordManager.checkAndDestroyTypedWord(typedWord); 
+        // <-- you need to modify WordManager to return the WordAsteroid
+
+        if (destroyedAsteroid != null) {
+            System.out.println("Word destroyed: " + typedWord);
+
+            // Spawn projectile from bottom center toward the asteroid
+            int startX = getWidth() / 2;           // bottom center (your "ship")
+            int startY = getHeight() - 50;
+            int targetX = destroyedAsteroid.getX();
+            int targetY = destroyedAsteroid.getY();
+            projectiles.add(new Projectile(startX, startY, targetX, targetY));
+
+            // Optional: play hit sound
+            Utils.playSound("./assets/hit.wav");
+        } else {
+            System.out.println("No Match: " + typedWord);
+        }
+
+        inputHandler.resetEnter();
+    }
+}
 
     @Override
     protected void paintComponent(Graphics g) {
