@@ -14,6 +14,10 @@ public class WordAsteroid {
         this.speed = speed;
     }
 
+    public String getWord() {
+        return word;
+    }
+
     // word position ( falling down)
     public void update() {
         y += speed;
