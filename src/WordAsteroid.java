@@ -3,12 +3,12 @@ package src;
 import java.awt.*;
 
 public class WordAsteroid {
-    private String text;
+    private String word;
     private int x, y;
     private int speed;
 
-    public WordAsteroid(String text, int x, int y, int speed) {
-        this.text = text;
+    public WordAsteroid(String word, int x, int y, int speed) {
+        this.word = word;
         this.x = x;
         this.y = y;
         this.speed = speed;
