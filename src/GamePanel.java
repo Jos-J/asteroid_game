@@ -99,9 +99,8 @@ public class GamePanel extends JPanel implements Runnable {
         String typedWord = inputHandler.getCurrentInput();
 
         // Return the asteroid object that matches typed word
-        WordAsteroid destroyedAsteroid = wordManager.checkAndDestroyTypedWord(typedWord); 
+        WordAsteroid destroyedAsteroid = wordManager.checkAndDestroyTypedWord(typedWord);
         
-
         if (destroyedAsteroid != null) {
             System.out.println("Word destroyed: " + typedWord);
 
