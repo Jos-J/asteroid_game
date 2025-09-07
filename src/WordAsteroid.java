@@ -28,7 +28,7 @@ public class WordAsteroid {
     public void draw(Graphics g) {
         g.setColor(Color.WHITE);
         g.setFont(new Font("Arial", Font.BOLD, 24));
-        g.drawString(text, x, y);
+        g.drawString(word, x, y);
     }
 
     // check if word has fallen off screen
@@ -36,10 +36,7 @@ public class WordAsteroid {
         return y > panelHeight;
     }
 
-    // Getters
-    public String getText() {
-        return text;
-    }
+    // Getters for position
 
     public int getX() { return x; }
     public int getY() { return y; }
