@@ -9,11 +9,14 @@ public class Projectile {
     private int speed;
     private boolean active;
 
-    public Projectile(int x, int y) {
-        this.x = x;
-        this.y = y;
-        this.speed = 12; // pixels per frame
+    public Projectile(int startX, int startY, int targetX, int targetY) {
+        this.x = startX;
+        this.y = startY;
         this.active = true;
+
+        double angle = Math.atan2(targetY - startY, targetX - startX);
+        dx = speed * Math.cos(angle);
+        dy = speed * Math.sin(angle);
     }
 
     public void update() {

@@ -100,19 +100,19 @@ public class GamePanel extends JPanel implements Runnable {
 
         // Return the asteroid object that matches typed word
         WordAsteroid destroyedAsteroid = wordManager.checkAndDestroyTypedWord(typedWord); 
-        // <-- you need to modify WordManager to return the WordAsteroid
+        
 
         if (destroyedAsteroid != null) {
             System.out.println("Word destroyed: " + typedWord);
 
             // Spawn projectile from bottom center toward the asteroid
-            int startX = getWidth() / 2;           // bottom center (your "ship")
+            int startX = getWidth() / 2;           
             int startY = getHeight() - 50;
             int targetX = destroyedAsteroid.getX();
             int targetY = destroyedAsteroid.getY();
             projectiles.add(new Projectile(startX, startY, targetX, targetY));
 
-            // Optional: play hit sound
+            // play hit sound
             Utils.playSound("./assets/hit.wav");
         } else {
             System.out.println("No Match: " + typedWord);
@@ -138,10 +138,14 @@ public class GamePanel extends JPanel implements Runnable {
         // draw words(asteroids)
         wordManager.draw(g);
 
+        // draw projectiles
+        for (Projectile p : projectiles) {
+            p.draw(g);
+        }
+
 
         g.setColor(Color.WHITE);
         g.drawString("GamePanel running...", 10, 20);
-
         g.setColor(Color.ORANGE);
         g.drawString("Input: " + inputHandler.getCurrentInput(), 10, 50);
 
