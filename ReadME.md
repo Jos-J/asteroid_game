@@ -17,34 +17,42 @@ This project demonstrates frontend game design, backend API development, and SQL
 ### 🏗️ Project Structure
 ```
 AsteroidGame/
-├── frontend/                     
-│   ├── index.html                
-│   ├── style.css                 
-│   └── game.js                   
+├── assets/                        # Images, sounds, fonts for the game
+│   ├── background_stars.png
+│   ├── hit.wav
+│   ├── miss.wav
+│   └── words.txt
 │
-├── backend/                      # Java backend (Spring Boot or Servlets)
-│   ├── src/
-│   │   ├── main/java/com/game/
-│   │   │   ├── AsteroidGameApp.java     # Main entry point
-│   │   │   ├── controller/
-│   │   │   │   ├── WordController.java  # API for words
-│   │   │   │   └── ScoreController.java # API for scores
-│   │   │   ├── model/
-│   │   │   │   ├── Word.java
-│   │   │   │   └── Score.java
-│   │   │   ├── service/
-│   │   │   │   ├── WordService.java
-│   │   │   │   └── ScoreService.java
-│   │   │   └── repository/
-│   │   │       ├── WordRepository.java
-│   │   │       └── ScoreRepository.java
-│   │   └── resources/
-│   │       ├── application.properties   # DB config
-│   │       └── data.sql                 # Optional sample data
-│   └── pom.xml                          # Maven config
+├── db/                            # SQL schema
+│   └── schema.sql                 # Tables for words and scores
 │
-└── db/
-    └── schema.sql                # SQL schema for words and scores
+├── backend/                       # Java backend (Spring Boot or Servlets)
+│   ├── pom.xml                    # Maven configuration
+│   └── src/
+│       └── main/
+│           ├── java/com/game/      
+│           │   ├── AsteroidGameApp.java       # Main entry point
+│           │   ├── controller/
+│           │   │   ├── WordController.java    # API for words
+│           │   │   └── ScoreController.java   # API for scores
+│           │   ├── model/
+│           │   │   ├── Word.java
+│           │   │   └── Score.java
+│           │   ├── service/
+│           │   │   ├── WordService.java
+│           │   │   └── ScoreService.java
+│           │   └── repository/
+│           │       ├── WordRepository.java
+│           │       └── ScoreRepository.java
+│           └── resources/
+│               ├── application.properties   # DB config
+│               └── data.sql                 # Optional sample data
+│
+└── frontend/                      
+    ├── index.html                 
+    ├── style.css                  
+    └── game.js                    
+
 ```
 
 ---
