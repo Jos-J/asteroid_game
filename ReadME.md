@@ -18,13 +18,11 @@ This project demonstrates frontend game design, backend API development, and SQL
 ```
 AsteroidGame/
 ├── assets/                        # Images, sounds, fonts for the game
-│   ├── background_stars.png
+│   ├── background.jpg
 │   ├── hit.wav
-│   ├── miss.wav
-│   └── words.txt
+│   └── miss.wav
+│   
 │
-├── db/                            # SQL schema
-│   └── schema.sql                 # Tables for words and scores
 │
 ├── backend/                       # Java backend (Spring Boot or Servlets)
 │   ├── pom.xml                    # Maven configuration
@@ -46,7 +44,8 @@ AsteroidGame/
 │           │       └── ScoreRepository.java
 │           └── resources/
 │               ├── application.properties   # DB config
-│               └── data.sql                 # Optional sample data
+│               ├── seed.sql
+│               └── schema.sql                 # Optional sample data
 │
 └── frontend/                      
     ├── index.html                 
