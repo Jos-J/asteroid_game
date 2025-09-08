@@ -1,11 +1,11 @@
 # 🚀 Asteroid Typing Game
 
-A portfolio-ready full-stack project where a classic typing game meets modern web development.  
+full-stack project where a classic typing game meets modern web development.  
 This project demonstrates frontend game design, backend API development, and SQL database integration — making it an excellent showcase for employers or personal learning.  
 
 ---
 
-## 🎮 Features
+### 🎮 Features
 - Words fall like asteroids — type them correctly to destroy them.
 - Shooting projectile effect when a word is destroyed.
 - Score tracking with a persistent leaderboard.
@@ -14,7 +14,7 @@ This project demonstrates frontend game design, backend API development, and SQL
 
 ---
 
-## 🏗️ Project Structure
+### 🏗️ Project Structure
 ```
 AsteroidGame/
 ├── frontend/                     
@@ -49,28 +49,28 @@ AsteroidGame/
 
 ---
 
-## 🔌 API Endpoints
+### 🔌 API Endpoints
 - `GET /api/words` → Fetch random words from database  
 - `POST /api/score` → Save a player score  
 - `GET /api/leaderboard` → Fetch top scores  
 
 ---
 
-## 🛠️ Tech Stack
+### 🛠️ Tech Stack
 Frontend: HTML5, CSS3, JavaScript  
 Backend: Java (Spring Boot)  
 Database: SQL (MySQL)  
 
 ---
 
-## 🚀 Getting Started
+### 🚀 Getting Started
 1. Import `db/schema.sql` into your SQL database.  
 2. Run the Java backend (`mvn spring-boot:run`).  
 3. Open `frontend/index.html` in your browser to start playing.  
 
 ---
 
-## 📌 Roadmap
+### 📌 Roadmap
 - [ ] Add animations for projectile hits  
 - [ ] Game over + restart screen  
 - [ ] Difficulty scaling (faster asteroids over time)  
@@ -78,7 +78,7 @@ Database: SQL (MySQL)
 
 ---
 
-## 📜 License
+### 📜 License
 
 ![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)
 
