@@ -7,23 +7,32 @@
     <link rel="stylesheet" type="text/css" href="./style.css">
     <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/5/w3.css">
     <title> Astroid Game </title>
+    
 </head>
 <body>
 
     <header>
-        <H2> Asteroid Game </H2>
+        <h2 style="background-color:gray;">Asteriod Game </h2>
+        <img src="/assets/Banner.jpg" alt="website Banner" class="Banner">
+         <button id="start" class="btn"> Start </button>
+            <button id="restart" class="btn"> Restart</button>
+            <button id="Play Again" class="btn" onclick="alert('Get Ready!')" >Play Again </button>
+            <button id="Scores" class="btn" onclick="alert('See Where you Rank!')">Score</button>
+            
+        
     </header>
 
     <main>
         <!-- Placeholder 1 -->
         <div>
-            <!-- Add content here -->
+           
         </div>
 
         <!-- Placeholder 2 -->
         <div>
-            <!-- Add content here -->
+            <canvas id="asteroid-game-canvas" width="400" height="720" style="cursor: auto;"> == $0 </canvas>
         </div>
+        
     </main>
 
     <footer class="w3-margin-top">
