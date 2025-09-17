@@ -8,3 +8,17 @@ body {
 h1 {
     color: beige;
 }
+
+button {
+    background-color: rgba(6,16,51,255);  /* For browsers that do not support gradients */
+    background-image: linear-gradient(to right,rgba(6,16,51,255), rgba(6,14,46,255),rgba(6,9,21,255));
+    border-radius: 25px;
+    color: azure;
+    border-color:whitesmoke    
+}
+
+
+footer {
+    color: azure;
+    position: absolute;
+}

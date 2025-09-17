@@ -12,10 +12,9 @@
 <body>
 
     <header>
-        <h1> Asteriod Game </h1>
+        <h1> Asteroid Game </h1>
         <!-- <img src="../assets/background.jpg" alt="website Banner" class="Banner"> -->
          <button id="start" class="btn"> Start </button>
-            <button id="restart" class="btn"> Restart</button>
             <button id="Play Again" class="btn" onclick="alert('Get Ready!')" >Play Again </button>
             <button id="Scores" class="btn" onclick="alert('See where you Rank!')">Score</button>
     </header>
@@ -28,7 +27,8 @@
 
         <!-- Placeholder 2 -->
         <div>
-            <canvas id="asteroid-game-canvas" width="400" height="720" style="cursor: auto;"> == $0 </canvas>
+            <!-- <canvas id="asteroid-game-canvas" width="400" height="720" border:1px solid #d3d3d3;> -->
+            <canvas id="asteroid-game-canvas" width="700" height="720" style="border:1px solid #f5f3f3;"></canvas>    
         </div>
         
     </main>
@@ -40,5 +40,6 @@
     </footer>
 
     <script src="./game.js"></script>
+     
 </body>
 </html>
