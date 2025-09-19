@@ -6,6 +6,7 @@ const startBtn = document.getElementById("startBtn");
 const mulliganBtn = document.getElementById("mulliganBtn");
 const scoreDisplay = document.getElementById("score");
 const finalScoreDisplay = document.getElementById("finalScore");
+const typeInput = document.getElementById("typeInput");
 
 
 const canvas = document.getElementById("asteroid-game-canvas")
