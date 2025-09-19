@@ -16,7 +16,7 @@ let score = 0;
 let asteroids =[];
 let gameRunning = false;
 
-const wordlist = ["asteroid", "planet", "comet", "rocket", "football", "soccer","javascript"];
+const wordList = ["asteroid", "planet", "comet", "rocket", "football", "soccer","javascript"];
 
 // Event Listeners
 
@@ -108,11 +108,3 @@ function gameOver() {
     finalScoreDisplay.textContent = score;
 }
 
-
-/*
-var c = document.getElementById("asteroid-game-canvas");
-var ctx = c.getContext("2d");
-ctx.font = "30px Arial";
-ctx.fillStyle = "green";
-ctx.fillText("Hello World", 10, 50);
-*/
