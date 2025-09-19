@@ -8,6 +8,16 @@ const scoreDisplay = document.getElementById("score");
 const finalScoreDisplay = document.getElementById("finalScore");
 
 
+const canvas = document.getElementById("asteroid-game-canvas")
+const ctx = canvas.getContext("2d");
+
+// Game Variables
+let score = 0;
+let asteroids =[];
+let gameRunning = false;
+
+// Event Listeners
+
 startBtn.addEventListener("click", () => {
   startScreen.style.display = "none";
   gameScreen.style.display = "block";
@@ -20,7 +30,13 @@ mulliganBtn.addEventListener("click", () => {
     startGame();
 })
 
+// Game Functions
+
 function startGame() {
+    score = 0;
+    scoreDisplay.textContent = score;
+    asteroids = [];
+    gameRunning = true;
     console.log("Game Started")
     setTimeout(() => gameOver(100), 1000);
 }
