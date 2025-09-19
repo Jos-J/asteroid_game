@@ -14,12 +14,12 @@
     <header>
         <h1> Asteroid Game </h1>
          <button id="startBtn" class="btn">Start</button>
-         <button id="ScoresBtn" class="btn">Scores</button>
+         <button id="scoresBtn" class="btn">Scores</button>
     </header>
 </div>
 
 <!-- Game Screen -->
- <div id="GameOverScreen" style="display:none;">
+ <div id="gameScreen" style="display:none;">
     <main>
         <canvas id="asteroid-game-canvas" width="700" height="720" style="border:1px solid #f5f3f3;"></canvas>
         <p>Score: <span id="score">0</span></p>
@@ -27,11 +27,11 @@
  </div>
 
  <!-- Game Over Screen-->
-  <div id="gameScreen" style="display: none;">
+  <div id="gameOverScreen" style="display: none;">
     <header>
         <h2> Game Over!</h2>
-        <p> Your score: <span id="Final score">0</span></p>
-        <button id="ResartBtn" class="btn">Play Again </button>
+        <p> Your score: <span id="FinalScore">0</span></p>
+        <button id="mulliganBtn" class="btn">Mulligan</button>
     </header>
   </div>
     
