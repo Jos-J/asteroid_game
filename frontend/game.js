@@ -12,9 +12,18 @@ const typeInput = document.getElementById("typeInput");
 const canvas = document.getElementById("asteroid-game-canvas");
 const ctx = canvas.getContext("2d");
 const pauseBtn = document.getElementById("pauseBtn")
+const lifeImg = new Image();
+lifeImg.src ="../assets/syringe.png";
+
+function drawLives(lives) {
+    for (let i = 0; i < lives; i++) {
+        ctx.drawImage(lifeImg, canvas.width - 30 -i*30, 10, 20, 20);
+    }
+}
 
 // Game variables
 let score = 0;
+let playerLives = 3;
 let asteroids = [];
 let gameRunning = false;
 let isPaused = false;
@@ -101,14 +110,18 @@ function update() {
     });
 }
 
-// Draw function with partial word highlight
+// draw the score 
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // score 
     ctx.font = "16px Arial";
     ctx.fillStyle = "white"
     ctx.textAlign = "left";
     ctx.textBaseline = "top";
     ctx.fillText(`Score: ${score}`, 10, 10); 
+    
+    drawLives(playerLives);
 
 
     asteroids.forEach(a => {
@@ -124,7 +137,7 @@ function draw() {
                 break;
             }
         }
-
+// Draw function with partial word highlight
         // Draw matched part in green
         ctx.fillStyle = "green";
         ctx.fillText(word.slice(0, matchLength), a.x, a.y);
@@ -133,6 +146,8 @@ function draw() {
         ctx.fillStyle = "white";
         ctx.fillText(word.slice(matchLength), a.x + ctx.measureText(word.slice(0, matchLength)).width, a.y);
     });
+
+   
 
     // Draw player ship
    ctx.beginPath();
