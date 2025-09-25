@@ -105,6 +105,11 @@ function update() {
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.font = "16px Arial";
+    ctx.fillStyle = "white"
+    ctx.textAlign = "left";
+    ctx.textBaseline = "top";
+    ctx.fillText(`Score: ${score}`, 10, 10); 
+
 
     asteroids.forEach(a => {
         const word = a.text;
