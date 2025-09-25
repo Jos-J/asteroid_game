@@ -66,6 +66,7 @@ function startGame() {
     score = 0;
     scoreDisplay.textContent = score;
     asteroids = [];
+    playerLives = 3;
     gameRunning = true;
     typeInput.value = "";
     typeInput.focus();
