@@ -101,12 +101,17 @@ function gameLoop() {
 function update() {
     asteroids.forEach(a => a.y += a.speed);
 
-    // Spawn new words if fewer than 5
     if (asteroids.length < 5) spawnWord();
 
-    // Check for words reaching bottom
-    asteroids.forEach(a => {
-        if (a.y > canvas.height) gameOver();
+    asteroids.forEach((a, index) => {
+        if (a.y > canvas.height) {
+            playerLives--;           // lose a life
+            asteroids.splice(index, 1); // remove word
+
+            if (playerLives <= 0) {
+                gameOver();          // game over if no lives
+            }
+        }
     });
 }
 
