@@ -104,7 +104,7 @@ function update() {
 // Draw function with partial word highlight
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.font = "24px Arial";
+    ctx.font = "16px Arial";
 
     asteroids.forEach(a => {
         const word = a.text;
@@ -130,8 +130,18 @@ function draw() {
     });
 
     // Draw player ship
-    ctx.fillStyle = "cyan";
-    ctx.fillRect(canvas.width / 2 - 15, canvas.height - 40, 30, 30);
+   ctx.beginPath();
+   ctx.moveTo(canvas.width / 2, canvas.height - 50);      // top point
+   ctx.lineTo(canvas.width / 2 - 10, canvas.height - 30); // bottom-left
+   ctx.lineTo(canvas.width / 2 + 10, canvas.height - 30); // bottom-right
+   ctx.closePath(); // close the triangle
+   
+   ctx.fillStyle = "Black";
+   ctx.fill();
+   ctx.lineWidth = 3;
+   ctx.strokeStyle = "White";
+   ctx.stroke();
+
 }
 
 // Game over
