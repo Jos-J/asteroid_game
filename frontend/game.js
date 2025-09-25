@@ -11,11 +11,13 @@ const typeInput = document.getElementById("typeInput");
 
 const canvas = document.getElementById("asteroid-game-canvas");
 const ctx = canvas.getContext("2d");
+const pauseBtn = document.getElementById("pauseBtn")
 
 // Game variables
 let score = 0;
 let asteroids = [];
 let gameRunning = false;
+let isPaused = false;
 
 // Word list
 const wordList = ["asteroid", "planet", "comet", "rocket", "football", "soccer","javascript"];
@@ -23,6 +25,10 @@ const wordList = ["asteroid", "planet", "comet", "rocket", "football", "soccer",
 // Event listeners
 startBtn.addEventListener("click", startGame);
 mulliganBtn.addEventListener("click", startGame);
+pauseBtn.addEventListener("click", () => {
+    isPaused = !isPaused;
+    pauseBtn.textContent = isPaused ? "Resume" : "Pause"
+});
 
 // Input listener with partial word highlight
 typeInput.addEventListener("input", () => {
@@ -74,9 +80,11 @@ function spawnWord() {
 function gameLoop() {
     if (!gameRunning) return;
 
-    update();
-    draw();
-
+    if (!isPaused) {
+        update();
+        draw();
+    }
+    
     requestAnimationFrame(gameLoop);
 }
 
