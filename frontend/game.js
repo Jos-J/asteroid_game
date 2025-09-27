@@ -17,7 +17,7 @@ lifeImg.src ="../assets/syringe.png";
 const bgMusic = new Audio("../assets/strange-phenomenon-114910.mp3");
 bgMusic.loop = true;
 bgMusic.volume = 0.2; 
-
+const footer = document.querySelector("footer");
 
 
 function drawLives(lives) {
@@ -38,6 +38,7 @@ const wordList = ["asteroid", "planet", "comet", "rocket", "football", "soccer",
 
 // Event listeners
 startBtn.addEventListener("click", () => {
+    footer.style.display = "none";
     bgMusic.play();
     startGame();
 });
@@ -99,7 +100,7 @@ function spawnWord() {
     const text = wordList[Math.floor(Math.random() * wordList.length)];
     const x = Math.random() * (canvas.width - 100);
     const y = -30;
-    const speed = 1 + Math.random() * 2;
+    const speed = .1 + Math.random() * 2;
     asteroids.push({ text, x, y, speed });
 }
 
@@ -192,6 +193,8 @@ function gameOver() {
     gameRunning = false;
     gameScreen.style.display = "none";
     gameOverScreen.style.display = "block";
+    console.log("final score", score);
+    console.log(finalScoreDisplay);
     finalScoreDisplay.textContent = score;
     bgMusic.pause();
 }
