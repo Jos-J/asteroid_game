@@ -1,4 +1,3 @@
-// Grab DOM elements
 const startScreen = document.getElementById("startScreen");
 const gameScreen = document.getElementById("gameScreen");
 const gameOverScreen = document.getElementById("gameOverScreen");
@@ -32,6 +31,7 @@ let playerLives = 3;
 let asteroids = [];
 let gameRunning = false;
 let isPaused = false;
+let explosions = [];
 
 // Word list
 const wordList = ["asteroid", "planet", "comet", "rocket", "football", "soccer","javascript"];
@@ -103,6 +103,24 @@ function spawnWord() {
     const speed = .1 + Math.random() * 2;
     asteroids.push({ text, x, y, speed });
 }
+
+function explodeWord(wordObj) {
+    // letter become a particle
+    const letters = [];
+    for (let i = 0; i < wordObj.text.length; i++) {
+        letters.push({
+            char: wordObj.text[i],
+            x: wordObj.x + i * 12, // letter spacing
+            y: wordObj.y,
+            dx: (Math.random() - 0.5) * 4, // horizontal speed
+            dy: (Math.random() - 0.5) * 4, // vertical speed
+            alpha: 1
+        });
+    }
+    explosions.push(letters);
+}
+
+
 
 // Game loop
 function gameLoop() {
