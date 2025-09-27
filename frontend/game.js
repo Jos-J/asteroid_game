@@ -7,9 +7,10 @@ const mulliganBtn = document.getElementById("mulliganBtn");
 const scoreDisplay = document.getElementById("score");
 const finalScoreDisplay = document.getElementById("finalScore");
 const typeInput = document.getElementById("typeInput");
-
 const canvas = document.getElementById("asteroid-game-canvas");
 const ctx = canvas.getContext("2d");
+const shipX = canvas.width / 2;
+const shipY = canvas.height - 40;
 const pauseBtn = document.getElementById("pauseBtn")
 const lifeImg = new Image();
 lifeImg.src ="../assets/syringe.png";
@@ -31,7 +32,11 @@ let playerLives = 3;
 let asteroids = [];
 let gameRunning = false;
 let isPaused = false;
-let explosions = [];
+let explosions =[];
+let bullets = [];
+// let shipX = canvas.width / 2;
+// let shipY = canvas.height - 40;
+
 
 // Word list
 const wordList = ["asteroid", "planet", "comet", "rocket", "football", "soccer","javascript"];
@@ -69,8 +74,8 @@ typeInput.addEventListener("input", () => {
             score += 1;
             scoreDisplay.textContent = score;
 
-            // explosion trigger for word
-            explodeWord(a);
+            // shooting at word
+            shootAtWord(a);
 
             typeInput.value = "";
             return false; // remove matched word
@@ -126,6 +131,18 @@ function explodeWord(wordObj) {
     explosions.push(letters);
 }
 
+function shootAtWord(wordObj) {
+    bullets.push({
+        x: shipX,
+        y: shipY,
+        targetX: wordObj.x,
+        targetY: wordObj.y,
+        word: wordObj,
+        progress: 0,   // progress between 0 → 1
+        speed: 0.05    // adjust to make bullet faster/slower
+    });
+}
+
 
 
 // Game loop
@@ -142,21 +159,60 @@ function gameLoop() {
 
 // Update game state
 function update() {
-    asteroids.forEach(a => a.y += a.speed);
+    if (!gameRunning || isPaused) return;
 
-    if (asteroids.length < 5) spawnWord();
+    // asteroids.forEach(a => a.y += a.speed);
 
-    asteroids.forEach((a, index) => {
-        if (a.y > canvas.height) {
+    for (let i = asteroids.length -1; i >= 0; i--) {
+        const a = asteroids[i];
+        a.y += a.speed;
+
+     if (a.y > canvas.height) {
             playerLives--;           // lose a life
-            asteroids.splice(index, 1); // remove word
+            asteroids.splice(i, 1); // remove word
 
             if (playerLives <= 0) {
                 gameOver();          // game over if no lives
             }
         }
-    });
+    }
+    
+    // new word spawn
+    if (asteroids.length < 5) spawnWord();
+
+
+    // bullets moving towards target
+    for (let i = bullets.length - 1; i >= 0; i--) {
+        const b = bullets[i];
+        b.progress += b.speed;
+        b.x = shipX + (b.targetX - shipX) * b.progress;
+        b.y = shipY + (b.targetY - shipY) * b.progress;
+
+        if (b.progress >= 1) {
+            explodeWord(b.word);
+            bullets.splice(i, 1);
+        }
+    }
+
+   
+
+    // -----------------------------
+    // Update explosions
+    // -----------------------------
+   for (let i = explosions.length - 1; i >= 0; i--) {
+        const letters = explosions[i];
+        letters.forEach(l => {
+            l.x += l.dx;
+            l.y += l.dy;
+            l.alpha -= 0.03;
+        });
+
+        if (letters.every(l => l.alpha <= 0)) {
+            explosions.splice(i, 1);
+        }
+    }
 }
+
 
 // draw the score 
 function draw() {
@@ -194,6 +250,15 @@ function draw() {
         ctx.fillStyle = "white";
         ctx.fillText(word.slice(matchLength), a.x + ctx.measureText(word.slice(0, matchLength)).width, a.y);
     });
+
+    // draw bullets
+    bullets.forEach(b => {
+        ctx.beginPath();
+        ctx.arc(b.x, b.y, 4, 0, Math.PI * 2);
+        ctx.fillStyle = "Green";
+        ctx.fill();
+    });
+
     // Draw explosions
     explosions.forEach((letters, index) => {
         letters.forEach(l => {
@@ -228,6 +293,7 @@ function draw() {
 
 }
 
+ 
 // Game over
 function gameOver() {
     gameRunning = false;
