@@ -14,6 +14,11 @@ const ctx = canvas.getContext("2d");
 const pauseBtn = document.getElementById("pauseBtn")
 const lifeImg = new Image();
 lifeImg.src ="../assets/syringe.png";
+const bgMusic = new Audio("../assets/strange-phenomenon-114910.mp3");
+bgMusic.loop = true;
+bgMusic.volume = 0.2; 
+
+
 
 function drawLives(lives) {
     for (let i = 0; i < lives; i++) {
@@ -32,11 +37,20 @@ let isPaused = false;
 const wordList = ["asteroid", "planet", "comet", "rocket", "football", "soccer","javascript"];
 
 // Event listeners
-startBtn.addEventListener("click", startGame);
+startBtn.addEventListener("click", () => {
+    bgMusic.play();
+    startGame();
+});
 mulliganBtn.addEventListener("click", startGame);
 pauseBtn.addEventListener("click", () => {
     isPaused = !isPaused;
     pauseBtn.textContent = isPaused ? "Resume" : "Pause"
+
+    if(isPaused){
+        bgMusic.pause(); // pause music
+    }else {
+        bgMusic.play(); // resume music
+    }
 });
 
 // Input listener with partial word highlight
