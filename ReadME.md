@@ -1,7 +1,7 @@
 # 🚀 Asteroid Typing Game
 
 full-stack project where a classic typing game meets modern web development.  
-This project demonstrates frontend game design, backend API development, and SQL database integration — making it an excellent showcase for employers or personal learning.  
+This project demonstrates frontend game design, backend API development, and SQL database integration. project is created for personal learning.   
 
 ---
 
@@ -18,9 +18,10 @@ This project demonstrates frontend game design, backend API development, and SQL
 ```
 AsteroidGame/
 ├── assets/                        # Images, sounds, fonts for the game
+│   ├── backgroundmusic.mp3
+│   ├── lifebar.png
 │   ├── background.jpg
-│   ├── hit.wav
-│   └── miss.wav
+│   └── wireframe.wav
 │   
 │
 │
@@ -49,7 +50,8 @@ AsteroidGame/
 │
 └── frontend/                      
     ├── index.html                 
-    ├── style.css                  
+    ├── style.css
+    ├── style.css                   
     └── game.js                    
 
 ```
@@ -78,8 +80,8 @@ Database: SQL (MySQL)
 ---
 
 ### 📌 Roadmap
-- [ ] Add animations for projectile hits  
-- [ ] Game over + restart screen  
+- [x] Add animations for projectile hits  
+- [x] Game over + restart screen  
 - [ ] Difficulty scaling (faster asteroids over time)  
 - [ ] Deploy online  
 
