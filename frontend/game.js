@@ -41,7 +41,10 @@ startBtn.addEventListener("click", () => {
     bgMusic.play();
     startGame();
 });
-mulliganBtn.addEventListener("click", startGame);
+mulliganBtn.addEventListener("click",() => {
+    bgMusic.play();
+    startGame();
+});
 pauseBtn.addEventListener("click", () => {
     isPaused = !isPaused;
     pauseBtn.textContent = isPaused ? "Resume" : "Pause"
@@ -190,4 +193,5 @@ function gameOver() {
     gameScreen.style.display = "none";
     gameOverScreen.style.display = "block";
     finalScoreDisplay.textContent = score;
+    bgMusic.pause();
 }
