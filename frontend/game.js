@@ -68,12 +68,18 @@ typeInput.addEventListener("input", () => {
         if (typed === word) {
             score += 1;
             scoreDisplay.textContent = score;
+
+            // explosion trigger for word
+            explodeWord(a);
+
             typeInput.value = "";
             return false; // remove matched word
         }
         return true;
     });
 });
+
+
 
 // Start game
 function startGame() {
@@ -188,8 +194,24 @@ function draw() {
         ctx.fillStyle = "white";
         ctx.fillText(word.slice(matchLength), a.x + ctx.measureText(word.slice(0, matchLength)).width, a.y);
     });
+    // Draw explosions
+    explosions.forEach((letters, index) => {
+        letters.forEach(l => {
+            ctx.fillStyle = `rgba(255, 165, 0, ${l.alpha})`;
+            ctx.font = "14px Arial";
+            ctx.fillText(l.char, l.x, l.y);
 
-   
+            l.x += l.dx;
+            l.y += l.dy;
+            l.alpha -= 0.03;
+        });
+
+        // invisible letters
+        if (letters.every(l => l.alpha <= 0)) {
+            explosions.splice(index, 1);
+        }
+    });
+
 
     // Draw player ship
    ctx.beginPath();
