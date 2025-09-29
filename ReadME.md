@@ -51,8 +51,8 @@ AsteroidGame/
 └── frontend/                      
     ├── index.html                 
     ├── style.css
-    ├── style.css                   
-    └── game.js                    
+    ├── game.js                   
+    └── api.js                    
 
 ```
 

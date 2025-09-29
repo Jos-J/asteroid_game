@@ -1,0 +1,9 @@
+assets
+backend
+frontend
+frontend/index.html
+frontend/style.css
+frontend/game.js
+frontend/api.js
+
+
