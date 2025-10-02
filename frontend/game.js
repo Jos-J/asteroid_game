@@ -1,8 +1,6 @@
-// const { use } = require("react");
 const startScreen = document.getElementById("startScreen");
 const gameScreen = document.getElementById("gameScreen");
 const gameOverScreen = document.getElementById("gameOverScreen");
-
 const startBtn = document.getElementById("startBtn");
 const mulliganBtn = document.getElementById("mulliganBtn");
 const scoreDisplay = document.getElementById("score");
@@ -87,28 +85,7 @@ typeInput.addEventListener("input", () => {
     });
 });
 
-document.addEventListener("keydown", (event) => {
-    if (!activeAsteroid) return; // 
-    if (!event.key.match(/^[a-z]$/i)) return; // 
 
-    const letter = event.key.toLowerCase();
-    userInput += letter;
-
-    // ❌ Wrong letter: play error sound
-    if (!activeAsteroid.text.startsWith(userInput)) {
-        errorSound.currentTime = 0;
-        errorSound.play();
-        userInput = userInput.slice(0, -1); // remove wrong letter
-    }
-
-    // ✅ Word completed
-    if (userInput === activeAsteroid.text) {
-        score += 10; // example scoring
-        explosions.push({x: activeAsteroid.x, y: activeAsteroid.y}); // optional explosion effect
-        asteroids = asteroids.filter(a => a !== activeAsteroid); // remove asteroid
-        setActiveAsteroid(); 
-    }
-});
 
 
 
