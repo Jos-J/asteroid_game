@@ -39,7 +39,7 @@ let bullets = [];
 
 
 // Word list
-const wordList = ["asteroid", "planet", "comet", "rocket", "football", "soccer","javascript"];
+const wordList = ["asteroid", "planet", "comet", "rocket", "football", "soccer", "javascript", "galaxy", "orbit", "spaceship"];
 
 // Event listeners
 startBtn.addEventListener("click", () => {
