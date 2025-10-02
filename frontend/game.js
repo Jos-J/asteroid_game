@@ -1,3 +1,4 @@
+// const { use } = require("react");
 const startScreen = document.getElementById("startScreen");
 const gameScreen = document.getElementById("gameScreen");
 const gameOverScreen = document.getElementById("gameOverScreen");
@@ -17,6 +18,7 @@ lifeImg.src ="../assets/lifebar.png";
 const bgMusic = new Audio("../assets/backgroundMusic.mp3");
 bgMusic.loop = true;
 bgMusic.volume = 0.2; 
+const errorSound = new Audio("../assets/typeError.mp3")
 const footer = document.querySelector("footer");
 
 
@@ -34,8 +36,9 @@ let gameRunning = false;
 let isPaused = false;
 let explosions =[];
 let bullets = [];
-// let shipX = canvas.width / 2;
-// let shipY = canvas.height - 40;
+let activeAsteroid = null;
+let userInput = "";
+
 
 
 // Word list
@@ -84,6 +87,29 @@ typeInput.addEventListener("input", () => {
     });
 });
 
+document.addEventListener("keydown", (event) => {
+    if (!activeAsteroid) return; // 
+    if (!event.key.match(/^[a-z]$/i)) return; // 
+
+    const letter = event.key.toLowerCase();
+    userInput += letter;
+
+    // ❌ Wrong letter: play error sound
+    if (!activeAsteroid.text.startsWith(userInput)) {
+        errorSound.currentTime = 0;
+        errorSound.play();
+        userInput = userInput.slice(0, -1); // remove wrong letter
+    }
+
+    // ✅ Word completed
+    if (userInput === activeAsteroid.text) {
+        score += 10; // example scoring
+        explosions.push({x: activeAsteroid.x, y: activeAsteroid.y}); // optional explosion effect
+        asteroids = asteroids.filter(a => a !== activeAsteroid); // remove asteroid
+        setActiveAsteroid(); 
+    }
+});
+
 
 
 // Start game
@@ -113,6 +139,17 @@ function spawnWord() {
     const y = -30;
     const speed = .1 + Math.random() * 2;
     asteroids.push({ text, x, y, speed });
+
+    if(!activeAsteroid) setActiveAsteroid();
+}
+
+function setActiveAsteroid() {
+    if(asteroids.length > 0) {
+        activeAsteroid = asteroids[0];
+        userInput = "";
+    } else {
+        activeAsteroid = null;
+    }
 }
 
 function explodeWord(wordObj) {
