@@ -21,6 +21,7 @@ AsteroidGame/
 │   ├── backgroundmusic.mp3
 │   ├── lifebar.png
 │   ├── background.jpg
+│   ├── typeError.mp3
 │   └── wireframe.wav
 │   
 │
