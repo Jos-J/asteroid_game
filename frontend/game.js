@@ -66,56 +66,54 @@ pauseBtn.addEventListener("click", () => {
 });
 
 // Input listener with partial word highlight
-typeInput.addEventListener("input", () => {
-    const typed = typeInput.value.trim().toLowerCase();
 
-    console.log("player typed", typed);
+typeInput.addEventListener("keydown", (e) => {
+    const key = e.key.toLowerCase();
 
+    // Ignore non-character keys
+    if (key.length !== 1) return;
+
+    // Build hypothetical string if this key were typed
+    const typed = typeInput.value.trim().toLowerCase() + key;
+
+    // Check for partial matches with all asteroids
     let hasMatch = false;
-    if (typed.length > 0) {
-        for (const a of asteroids) {
-            const word = a.text.toLowerCase();
-
-            if (word.startsWith(typed)) {
-                hasMatch = true;
-                console.log("partial match with", word);
-                break;
-            }
+    for (const a of asteroids) {
+        const word = a.text.toLowerCase();
+        if (word.startsWith(typed)) {
+            hasMatch = true;
+            break;
         }
+    }
 
-        if(!hasMatch) {
-            const now = Date.now();
-            if (now - lastErrorTime > errorCooldown || typed !== userInput) {
-            console.log("no match found -> play error sound");
+    // Wrong key → play error sound and prevent entry
+    if (!hasMatch) {
+        e.preventDefault(); // blocks the wrong key
+        const now = Date.now();
+        if (now - lastErrorTime > errorCooldown) {
             errorSound.currentTime = 0;
             errorSound.play();
             lastErrorTime = now;
-
-          }
-
         }
     }
-    userInput = typed;
 
-    asteroids = asteroids.filter(a => {
-        const word = a.text.toLowerCase();
-
-        // Full match → remove word and update score
-        if (typed === word) {
-            console.log("full match with:", word)
-            score += 1;
-            scoreDisplay.textContent = score;
-
-            // shooting at word
-            shootAtWord(a);
-
-            typeInput.value = "";
-            userInput = "";
-            return false; // remove matched word
-        } 
+    // Full match check (after correct key is typed)
+    setTimeout(() => {
+        const currentTyped = typeInput.value.trim().toLowerCase();
+        asteroids = asteroids.filter(a => {
+            const word = a.text.toLowerCase();
+            if (currentTyped === word) {
+                score += 1;
+                scoreDisplay.textContent = score;
+                shootAtWord(a);
+                typeInput.value = "";
+                return false; // remove asteroid
+            }
             return true;
-    });
+        });
+    }, 0);
 });
+
 
 
 
