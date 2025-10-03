@@ -67,11 +67,33 @@ pauseBtn.addEventListener("click", () => {
 typeInput.addEventListener("input", () => {
     const typed = typeInput.value.trim().toLowerCase();
 
+    console.log("player typed", typed);
+
+    let hasMatch = false;
+    if (typed.length > 0) {
+        for (const a of asteroids) {
+            const word = a.text.toLowerCase();
+
+            if (word.startsWith(typed)) {
+                hasMatch = true;
+                console.log("partial match with", word);
+                break;
+            }
+        }
+
+        if(!hasMatch) {
+            console.log("no match found -> play error sound");
+            errorSound.currentTime = 0;
+            errorSound.play();
+        }
+    }
+
     asteroids = asteroids.filter(a => {
         const word = a.text.toLowerCase();
 
         // Full match → remove word and update score
         if (typed === word) {
+            console.log("full match with:", word)
             score += 1;
             scoreDisplay.textContent = score;
 
@@ -80,14 +102,8 @@ typeInput.addEventListener("input", () => {
 
             typeInput.value = "";
             return false; // remove matched word
-        } else {
-            let i = type.length -1;
-            if(i >= 0 && typed[i] !== word[i]) {
-                errorSound.currentTime = 0;
-                errorSound.play();
-            }
-        }
-        return true;
+        } 
+            return true;
     });
 });
 
