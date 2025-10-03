@@ -44,6 +44,17 @@ let lastErrorTime = 0;
 // Word list
 const wordList = ["asteroid", "planet", "comet", "rocket", "football", "soccer", "javascript", "galaxy", "orbit", "spaceship"];
 
+// level 1 short words
+const level1Words = [];
+
+// level 2 medium words
+
+// level 3 long words
+
+//level array for easier access 
+
+
+
 // Event listeners
 startBtn.addEventListener("click", () => {
     footer.style.display = "none";
