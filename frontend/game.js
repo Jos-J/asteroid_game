@@ -17,6 +17,7 @@ const bgMusic = new Audio("../assets/backgroundMusic.mp3");
 bgMusic.loop = true;
 bgMusic.volume = 0.2; 
 const errorSound = new Audio("../assets/typeError.mp3")
+const errorCooldown = 200;
 const footer = document.querySelector("footer");
 
 
@@ -36,6 +37,7 @@ let explosions =[];
 let bullets = [];
 let activeAsteroid = null;
 let userInput = "";
+let lastErrorTime = 0;
 
 
 
@@ -82,11 +84,18 @@ typeInput.addEventListener("input", () => {
         }
 
         if(!hasMatch) {
+            const now = Date.now();
+            if (now - lastErrorTime > errorCooldown || typed !== userInput) {
             console.log("no match found -> play error sound");
             errorSound.currentTime = 0;
             errorSound.play();
+            lastErrorTime = now;
+
+          }
+
         }
     }
+    userInput = typed;
 
     asteroids = asteroids.filter(a => {
         const word = a.text.toLowerCase();
@@ -101,6 +110,7 @@ typeInput.addEventListener("input", () => {
             shootAtWord(a);
 
             typeInput.value = "";
+            userInput = "";
             return false; // remove matched word
         } 
             return true;
