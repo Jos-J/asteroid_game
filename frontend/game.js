@@ -95,6 +95,7 @@ typeInput.addEventListener("keydown", (e) => {
             errorSound.play();
             lastErrorTime = now;
         }
+        return;
     }
 
     // Full match check (after correct key is typed)
