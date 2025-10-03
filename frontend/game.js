@@ -80,6 +80,12 @@ typeInput.addEventListener("input", () => {
 
             typeInput.value = "";
             return false; // remove matched word
+        } else {
+            let i = type.length -1;
+            if(i >= 0 && typed[i] !== word[i]) {
+                errorSound.currentTime = 0;
+                errorSound.play();
+            }
         }
         return true;
     });
