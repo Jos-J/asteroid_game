@@ -70,9 +70,7 @@ AsteroidGame/
 ---
 
 ### 🛠️ Tech Stack
-Frontend: HTML5, CSS3, JavaScript  
-Backend: Java (Spring Boot)  
-Database: SQL (MySQL)
+
 
 ---
 
