@@ -1,7 +1,5 @@
 # 🚀 Asteroid Typing Game
 
-**currently in the  process of coverting Full Stack app into and typescript react full stack app**
-
 A full-stack typing game where words fall like asteroids, and you must type them to destroy them. This project demonstrates React + TypeScript frontend, Node + TypeScript backend, Prisma ORM, and MySQL database integration. Built for personal learning and modern web development practice..   
 
 ---
@@ -17,11 +15,7 @@ A full-stack typing game where words fall like asteroids, and you must type them
 ### 🏗️ Project Structure
 ```
 AsteroidGame/
-├── assets/                        # Game images, sounds, fonts
-│   ├── backgroundmusic.mp3
-│   ├── lifebar.png
-│   ├── background.jpg
-│   ├── typeError.mp3
+├── Docs/
 │   └── wireframe.wav
 │
 ├── backend/                       # Node.js + TypeScript backend
@@ -63,14 +57,23 @@ AsteroidGame/
         │   └── scoreApi.ts
         ├── types/                 # TypeScript interfaces & types
         │   └── gameTypes.ts
-        └── assets/                # Optional game assets for frontend
-                    
+        ├── assets/                        # Game images, sounds, fonts
+            ├── backgroundmusic.mp3
+            ├── lifebar.png
+            ├── background.jpg
+            └── typeError.mp3
+
 ```
-
-
 ---
 
-### 📜 License
+### 🧑‍💻 Contact Me 
+Have suggestions or feedback, let us know. Feel free to reach out: 
+
+- **Github:** [Jos-J ](https://github.com/Jos-J)
+- **Email**  [jos_james@outlook.com](https://mail.google.com/mail/?view=cm&to=jos_james@outlook.com)
+- **Phone:** [123456789](tel:123456789)
+
+Your feedback is appreciated, thank you for helping me improve. 
 
 ![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)
 
