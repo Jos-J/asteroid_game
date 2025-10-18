@@ -65,33 +65,8 @@ AsteroidGame/
         │   └── gameTypes.ts
         └── assets/                # Optional game assets for frontend
                     
-
-```
----
-
-### 🛠️ Tech Stack
-
-
----
-
-### 🚀 Getting Started
-```
-cd backend
-npm install
-npx prisma migrate dev       # Run database migrations
-npx prisma db seed           # Seed initial data (optional)
-npm run dev                  # Start backend server
-
 ```
 
----
-
-### 📌 Roadmap
-- [ ] React + TypeScript frontend 
-- [ ] Node + TypeScript backend with Prisma + MySQL 
-  [ ] Game over + restart screen
-- [ ] Difficulty scaling (faster asteroids over time)  
-- [ ] Deploy online  
 
 ---
 
